@@ -1,0 +1,81 @@
+
+using namespace std;
+#include <iostream>
+
+
+const int Maxsize = 30;
+template <class t>
+
+
+class stack
+{
+
+private:
+	t top;
+	t array[Maxsize];
+
+public:
+
+	stack():top(-1){}
+
+	void push(t Element)
+	{
+		if (top > Maxsize - 1)
+		{
+			cout << "stack is full";
+		}
+		else
+		{
+			top++;
+			array[top] = Element;
+		}
+
+
+	}
+
+	bool isEmpty()
+	{
+		return top < 0;
+	}
+
+	void pop()
+	{
+		if (isEmpty())
+		{
+			cout << "stack is empty on pop" << endl;
+		}
+		else
+		{
+			cout <<"popped: "<< array[top]<<endl;
+			top--;
+		}
+	}
+
+
+	void print()
+	{
+		cout << "push: ";
+		cout << "[";
+		for (int i = 0; i <= top ; i++)
+		{
+			cout << array[i] << " ";
+		}
+		cout << "]";
+	}
+	
+
+
+};
+
+
+
+int main()
+{
+	stack<int> s;
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	s.pop();
+	s.print();
+	
+}
