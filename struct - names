@@ -1,0 +1,25 @@
+
+using namespace std;
+#include <iostream>
+
+
+struct  students
+{
+	string name;
+
+};
+
+int main()
+{
+	students s[5];
+	cout << "Enter students names: ";
+	cin >> s[0].name >> s[1].name >> s[2].name >> s[3].name >> s[4].name ;
+	
+	cout << "name 1: "<<s[0].name << endl;
+	cout << "name 2: " << s[1].name << endl;
+	cout << "name 3: " << s[2].name << endl;
+	cout << "name 4: " << s[3].name << endl;
+	cout << "name 5: " << s[4].name << endl;
+
+
+}
