@@ -1,0 +1,17 @@
+
+using namespace std;
+#include <iostream>
+
+
+int main()
+{
+	int x = 20;
+	int* ptr = &x;
+
+	cout << ptr<<endl;
+	cout << *ptr<<endl;
+
+	*ptr = 40;
+	cout << x<<endl;
+  
+}
