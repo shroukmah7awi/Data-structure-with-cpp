@@ -1,0 +1,50 @@
+
+using namespace std;
+#include <iostream>
+
+struct node
+{
+	int data;
+	node* next;
+};
+node* head = NULL;
+
+void insertnode(int val)
+{
+	node* new_node, * last;
+	new_node = new node;
+	new_node->data = val;
+
+
+	if (head == NULL)
+	{
+		head = new_node;
+		new_node->next = NULL;
+
+	}
+	else
+	{
+		last = head;
+
+		while (last->next != NULL)
+		{
+			last = last->next;
+		}
+		last->next = new_node;
+		new_node->next = NULL;
+	}
+}
+
+
+
+
+
+int main()
+{
+	
+	insertnode(1);
+	insertnode(2);
+	insertnode(3);
+	insertnode(4);
+
+}
