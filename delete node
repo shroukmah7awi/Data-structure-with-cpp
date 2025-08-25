@@ -1,0 +1,91 @@
+
+using namespace std;
+#include <iostream>
+
+
+struct node
+{
+	int data;
+	node* next;
+};
+node* head;
+
+void push(int value)
+{
+	node* newnode, * last;
+	newnode = new node;
+	newnode->data = value;
+
+	if (head == NULL)
+	{
+		head=newnode;
+		newnode->next = NULL;
+	}
+	else
+	{
+		last = head;
+		while (last->next!=NULL)
+		{
+			last = last->next;
+		}
+		last->next = newnode;
+		newnode->next = NULL;
+	}
+}
+void pop(int value)
+{
+	node* cur, * per;
+	cur = head;
+	per = head;
+
+	if (cur->data == value)
+	{
+		head = cur->next;
+		free(cur);
+		return;
+	}
+	while (cur->data !=value)
+	{
+		per = cur;
+		cur = cur->next;
+	}
+	per->next = cur->next;
+	free(cur);
+}
+
+
+
+
+
+void print()
+{
+	node* current;
+	if (head == NULL)
+	{
+		cout << "there is no elements";
+	}
+	else
+	{
+		current = head;
+		while (current != NULL)
+		{
+			cout << current->data<<"\t";
+			current = current->next;
+		}
+	}
+
+}
+
+
+
+int main()
+{
+	push(3);
+	push(4);
+	push(5);
+	push(6);
+
+	pop(3);
+	print();
+
+}
