@@ -1,0 +1,148 @@
+using namespace std;
+#include <iostream>;
+
+
+struct node
+{
+	int data;
+	node* next;
+};
+node* head = NULL;
+
+void push(int value);
+void pop(int value);
+void nodeAbegining(int value);
+void deleteNode();
+void deleteEnd();
+void print();
+
+
+int main()
+{
+	push(1);
+	push(2);
+	push(3);
+	push(4);
+	pop(4);
+
+
+	nodeAbegining(0);
+	deleteNode();
+	deleteEnd();
+
+	print();
+
+}
+
+
+void push(int value)
+{
+	node* newnode, * last;
+	newnode = new node;
+	newnode->data = value;
+
+	if (head == NULL)
+	{
+		head = newnode;
+		newnode->next = NULL;
+	}
+	else
+	{
+		last = head;
+		while (last->next != NULL)
+		{
+			last = last->next;
+		}
+		last->next = newnode;
+		newnode->next = NULL;
+	}
+}
+
+void pop(int value)
+{
+	node* cur, * per;
+	cur = head;
+	per = head;
+
+	if (cur->data == value)
+	{
+		head = cur;
+		free(cur);
+		return;
+	}
+	while (cur->data != value)
+	{
+		per = cur;
+		cur = cur->next;
+	}
+	per->next = cur->next;
+	free(cur);
+}
+
+void nodeAbegining(int value)
+{
+	node* newnode = new node;
+	newnode->data = value;
+	newnode->next = head;
+	head = newnode;
+}
+
+void deleteNode()
+{
+	if (head == NULL)
+	{
+
+		cout << "no elements";
+	}
+	else
+	{
+		node* firstnode=head;
+		head = firstnode->next;
+		delete(firstnode);
+	}
+}
+
+void print()
+{
+	node* current;
+
+	if (head == NULL)
+	{
+		cout << "no elements";
+	}
+	else
+	{
+		current = head;
+		while (current != NULL)
+		{
+			cout << current->data;
+			current = current->next;
+		}
+
+	}
+}
+  
+void deleteEnd()
+{
+	if (head == NULL)
+	{
+		cout << "no elements";
+	}
+	else if (head->next == NULL)
+	{
+		delete(head);
+		head = NULL;
+	}
+	else
+	{
+		node* ptr = head;
+
+		while (ptr->next->next != NULL)
+		{
+			ptr = ptr->next;
+		}
+		delete(ptr->next);
+		ptr->next = NULL;
+
+	}
+}
