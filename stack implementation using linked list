@@ -1,0 +1,81 @@
+using namespace std;
+#include<iostream>
+
+struct node
+{
+	int data;
+	node* next;
+};
+
+node* top = NULL;
+
+void display()
+{
+
+	node* current;
+	if (top == NULL)
+	{
+		cout << "no elements";
+	}
+	else
+	{
+		current = top;
+		while (current != NULL)
+		{
+			cout << current->data << endl;
+			current = current->next;
+		}
+	}
+}
+
+void push(int value)
+{
+	
+	node* newnode = new node;
+	newnode->data = value;
+	newnode->next = top;
+	top = newnode;
+}
+
+int pop()
+{
+	int value;
+	if (top == NULL)
+	{
+		cout << "no elements";
+	}
+	else
+	{
+		node* firstnod = top;
+		top = firstnod->next;
+		value = firstnod->data;
+		delete(firstnod);
+		return value;
+
+	}
+}
+int peek()
+{
+	if (top == NULL)
+	{
+		cout << "no elements";
+	}
+	else
+	{
+		cout << "peek is: ";
+		return top->data;
+
+	}
+}
+int main()
+{
+	push(1);
+	push(2);
+	push(3);
+	push(4);
+
+	pop();
+
+	peek();
+	display();
+}
